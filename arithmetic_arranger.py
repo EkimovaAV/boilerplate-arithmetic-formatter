@@ -8,7 +8,10 @@ def arithmetic_arranger(problems, getanswer=False):
     firstNum = ""
     secondNum = ""
 
-    
+    oneline=''
+    secondline=''
+    poloski=''
+    answer=''
     for i in range(len(problems)):
             if re.search("[^\s0-9.+-]", problems[i]):
                 if re.search(["/*"], problems[i]) :
@@ -29,5 +32,8 @@ def arithmetic_arranger(problems, getanswer=False):
                 else:
                     length=len(rightOper)-len(leftOper)
                     lines=len(rightOper)
-                    arranged_problems+= (length)*' '+ f" {leftOper}   \n{operator} {rightOper}    \n"+lines*'-'+'--    '
+                oneline+=(length)*' '+ f" {leftOper}    "
+                secondline+=f"{operator} {rightOper}    "
+                poloski+=lines*'-'+'--    '
+    arranged_problems+= oneline+"\n"+secondline+"\n"+poloski
     return arranged_problems
