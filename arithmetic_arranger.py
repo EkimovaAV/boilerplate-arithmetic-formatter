@@ -5,9 +5,6 @@ def arithmetic_arranger(problems, getanswer=False):
     if len(problems) > 5:
         return "Error: Too many problems."
 
-    firstNum = ""
-    secondNum = ""
-
     oneline=''
     secondline=''
     poloski=''
@@ -15,7 +12,7 @@ def arithmetic_arranger(problems, getanswer=False):
 
     for i in range(len(problems)):
             if re.search("[^\s0-9.+-]", problems[i]):
-                if re.search(["/*"], problems[i]) :
+                if re.search("[/*]", problems[i]) :
                     return "Error: Operator must be '+' or '-'."
                 return "Error: Numbers must only contain digits."
 
