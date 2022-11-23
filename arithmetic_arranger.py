@@ -12,6 +12,7 @@ def arithmetic_arranger(problems, getanswer=False):
     secondline=''
     poloski=''
     answer=''
+
     for i in range(len(problems)):
             if re.search("[^\s0-9.+-]", problems[i]):
                 if re.search(["/*"], problems[i]) :
@@ -26,6 +27,7 @@ def arithmetic_arranger(problems, getanswer=False):
                 return "Error: Numbers cannot be more than four digits."
             else:
                 #right i think
+                space = max(len(leftOper), len(rightOper))
                 if len(leftOper) >= len(rightOper):
                     length = len(leftOper) - len(rightOper)
                     lines=len(leftOper)
@@ -39,6 +41,13 @@ def arithmetic_arranger(problems, getanswer=False):
                     oneline += (length)*' '+ f"  {leftOper}    "
                     secondline += f"{operator} {rightOper}    "
                     poloski += lines*'-'+'--    '
-
+            if getanswer ==True:
+                if operator == '+':
+                    answer +=  str(int(leftOper)+int(rightOper)).rjust(space + 2)+'    '
+                else:
+                    answer += str(int(leftOper)-int(rightOper)).rjust(space + 2)+'    '
+    if getanswer:
+        arranged_problems=  oneline + "\n" + secondline + "\n" + poloski+'\n'+answer
+        return arranged_problems
     arranged_problems += oneline + "\n" + secondline + "\n" + poloski
     return arranged_problems
