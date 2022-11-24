@@ -44,7 +44,7 @@ def arithmetic_arranger(problems, getanswer=False):
                 else:
                     answer += str(int(leftOper)-int(rightOper)).rjust(space + 2)+'    '
     if getanswer:
-        arranged_problems=  oneline + "\n" + secondline + "\n" + poloski+'\n'+answer
+        arranged_problems=  oneline.rstrip() + "\n" + secondline.rstrip() + "\n" + poloski.rstrip()+'\n'+answer.rstrip()
         return arranged_problems
-    arranged_problems += oneline + "\n" + secondline + "\n" + poloski
+    arranged_problems = oneline.rstrip() + "\n" + secondline.rstrip() + "\n" + poloski.rstrip()
     return arranged_problems
